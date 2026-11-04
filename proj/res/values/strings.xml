@@ -70,4 +70,10 @@
     <string name="app_name">CodeBubble</string>
     <string name="btn_got_it">Got it</string>
     <string name="perm_oem_bg">Background battery setting</string>
+    <string name="section_extra_perms">Additional permissions (optional)</string>
+    <string name="tracking_active">✓ Clipboard tracking is on</string>
+    <string name="ready_title">You are ready!</string>
+    <string name="ready_msg">Clipboard tracking started. We will send you a test notification in 10 seconds — you can leave the app.</string>
+    <string name="test_notif_title">KodBalonu test notification</string>
+    <string name="test_notif_text">Clipboard tracking is on. When a code arrives, the bubble will pop up here.</string>
 </resources>

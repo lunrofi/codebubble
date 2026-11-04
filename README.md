@@ -6,11 +6,11 @@
 copies them to the clipboard, and shows a draggable bubble. Long-press the
 code in the bubble and drag it onto a text field to drop the code there.
 
-- **Version:** 3.10 (version code 13)
-- **Download:** [kodbalonu-3.10.apk](releases/kodbalonu-3.10.apk)
+- **Version:** 3.11 (version code 14)
+- **Download:** [kodbalonu-3.11.apk](releases/kodbalonu-3.11.apk)
 - **Package:** `com.bmo.kodbalonu`
 - **Min SDK:** 26 (Android 8.0) · **Target SDK:** 34 (Android 14)
-- **Size:** ~229 KB — no heavy libraries, plain Java, no Gradle needed
+- **Size:** ~237 KB — no heavy libraries, plain Java, no Gradle needed
 - **License:** MIT (see [LICENSE](LICENSE))
 
 > KodBalonu is written from scratch. It does not contain code from any
@@ -46,6 +46,15 @@ code in the bubble and drag it onto a text field to drop the code there.
   sensitive (Android 13+).
 - **Hide code in history** — optionally masks codes in the history list.
 - **Auto-clean** — optionally deletes history entries older than 30 days.
+- **Optional extra permissions** — the per-brand background battery
+  shortcut and the restricted-settings shortcut live in their own
+  "Additional permissions (optional)" section; they are not required.
+- **Prominent start button** — the start button sits at the top of the
+  home screen and stays disabled (dimmed) until all 5 required
+  permissions are granted.
+- **Ready notice + test notification** — when tracking starts, a
+  "You're ready" notice appears: a test notification arrives 10 seconds
+  later, so you can leave the app and see it arrive.
 - **Spaced and hyphenated codes** — codes written as `123 456` or `123-456`
   are normalized and detected.
 - **12 languages** — English (default), Turkish, Spanish, German, French,

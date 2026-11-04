@@ -54,6 +54,10 @@ public class MainActivity extends Activity {
             new java.util.HashMap<>();
     private LinearLayout mHistoryBox;
     private LinearLayout mPermContent;
+    private LinearLayout mExtraPermContent;
+    private Button mTopStartBtn;
+    private android.os.Handler mTestHandler;
+    private Runnable mTestRunnable;
     private EditText mPhrasesEdit;
     private EditText mIgnoredPhrasesEdit;
     private EditText mCleanupEdit;
@@ -180,7 +184,7 @@ public class MainActivity extends Activity {
         tagline.setTextColor(C_SUB);
         headerText.addView(tagline);
         TextView version = new TextView(this);
-        version.setText("v3.10");
+        version.setText("v3.11");
         version.setTextSize(12);
         version.setTextColor(C_SUB);
         headerText.addView(version);
@@ -216,6 +220,22 @@ public class MainActivity extends Activity {
         header.addView(themeBtn);
         root.addView(header);
         root.addView(spacer(dp(16)));
+
+        // ---- Start tracking (top, prominent) ----
+        mTopStartBtn = primaryButton(getString(R.string.btn_start_clip),
+                new View.OnClickListener() {
+                    @Override public void onClick(View v) {
+                        startTracking();
+                    }
+                });
+        mTopStartBtn.setTextSize(18);
+        mTopStartBtn.setMinHeight(dp(64));
+        LinearLayout.LayoutParams topLp = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        topLp.setMargins(dp(16), 0, dp(16), dp(14));
+        mTopStartBtn.setLayoutParams(topLp);
+        root.addView(mTopStartBtn);
 
         // ---- Language ----
         LinearLayout langCard = section(root, 0xFF7C3AED,
@@ -286,6 +306,13 @@ public class MainActivity extends Activity {
                 getString(R.string.section_permissions), "permissions", false, "");
         mPermContent = permCard;
         refreshPermissions();
+
+        // ---- Additional permissions (optional) ----
+        LinearLayout extraCard = section(root, 0xFF6B7280,
+                android.R.drawable.ic_menu_more,
+                getString(R.string.section_extra_perms), "extra_perms", false, "");
+        mExtraPermContent = extraCard;
+        refreshExtraPerms();
 
         // ---- Settings (switches) ----
         LinearLayout setCard = section(root, 0xFF2563EB,
@@ -470,30 +497,11 @@ public class MainActivity extends Activity {
                         .getBoolean("enabled", false)
                         ? getString(R.string.value_on)
                         : getString(R.string.value_off));
-        clipCard.addView(primaryButton(getString(R.string.btn_start_clip),
-                new View.OnClickListener() {
-                    @Override public void onClick(View v) {
-                        if (!Settings.canDrawOverlays(MainActivity.this)) {
-                            Toast.makeText(MainActivity.this,
-                                    getString(R.string.toast_need_overlay),
-                                    Toast.LENGTH_LONG).show();
-                            return;
-                        }
-                        setEnabled(true);
-                        Intent svc = new Intent(MainActivity.this,
-                                ClipboardService.class);
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                            startForegroundService(svc);
-                        } else {
-                            startService(svc);
-                        }
-                        refreshStatus();
-                    }
-                }));
         clipCard.addView(secondaryButton(getString(R.string.btn_stop_clip),
                 new View.OnClickListener() {
                     @Override public void onClick(View v) {
                         setEnabled(false);
+                        cancelTestNotification();
                         stopService(new Intent(MainActivity.this,
                                 ClipboardService.class));
                         BubbleManager.hide(MainActivity.this);
@@ -862,6 +870,143 @@ public class MainActivity extends Activity {
                 .edit().putBoolean("enabled", enabled).apply();
     }
 
+    private boolean mandatoryAll() {
+        return checkSelfPermission(Manifest.permission.RECEIVE_SMS)
+                        == PackageManager.PERMISSION_GRANTED
+                && isPostNotifGranted()
+                && isNotifAccessEnabled()
+                && Settings.canDrawOverlays(this)
+                && isBgUnrestricted();
+    }
+
+    private void refreshTopButton() {
+        if (mTopStartBtn == null) return;
+        boolean enabled = getSharedPreferences("kodbalonu", Context.MODE_PRIVATE)
+                .getBoolean("enabled", false);
+        if (enabled) {
+            mTopStartBtn.setText(getString(R.string.tracking_active));
+            mTopStartBtn.setEnabled(false);
+            mTopStartBtn.setAlpha(1f);
+        } else {
+            mTopStartBtn.setText(getString(R.string.btn_start_clip));
+            boolean ok = mandatoryAll();
+            mTopStartBtn.setEnabled(ok);
+            mTopStartBtn.setAlpha(ok ? 1f : 0.45f);
+        }
+    }
+
+    private void startTracking() {
+        if (!Settings.canDrawOverlays(this)) {
+            Toast.makeText(this, getString(R.string.toast_need_overlay),
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
+        setEnabled(true);
+        Intent svc = new Intent(this, ClipboardService.class);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startForegroundService(svc);
+        } else {
+            startService(svc);
+        }
+        refreshStatus();
+        refreshPermissions();
+        showReadyDialog();
+        scheduleTestNotification();
+    }
+
+    private void showReadyDialog() {
+        final android.app.Dialog dialog = new android.app.Dialog(this);
+        LinearLayout box = new LinearLayout(this);
+        box.setOrientation(LinearLayout.VERTICAL);
+        box.setPadding(dp(20), dp(20), dp(20), dp(20));
+        GradientDrawable bg = new GradientDrawable();
+        bg.setColor(C_CARD);
+        bg.setCornerRadius(dp(20));
+        box.setBackground(bg);
+        TextView t = new TextView(this);
+        t.setText(getString(R.string.ready_title));
+        t.setTextSize(20);
+        t.setTypeface(null, android.graphics.Typeface.BOLD);
+        t.setTextColor(C_TEXT);
+        box.addView(t);
+        box.addView(spacer(dp(10)));
+        TextView msg = new TextView(this);
+        msg.setText(getString(R.string.ready_msg));
+        msg.setTextSize(15);
+        msg.setTextColor(C_SUB);
+        box.addView(msg);
+        box.addView(spacer(dp(14)));
+        box.addView(primaryButton(getString(R.string.btn_got_it),
+                new View.OnClickListener() {
+                    @Override public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                }));
+        dialog.setContentView(box);
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawable(
+                    new android.graphics.drawable.ColorDrawable(
+                            android.graphics.Color.TRANSPARENT));
+        }
+        dialog.show();
+    }
+
+    private void scheduleTestNotification() {
+        cancelTestNotification();
+        if (mTestHandler == null) mTestHandler = new android.os.Handler();
+        mTestRunnable = new Runnable() {
+            @Override public void run() {
+                postTestNotification();
+            }
+        };
+        mTestHandler.postDelayed(mTestRunnable, 10000);
+    }
+
+    private void cancelTestNotification() {
+        if (mTestHandler != null && mTestRunnable != null) {
+            mTestHandler.removeCallbacks(mTestRunnable);
+        }
+        mTestRunnable = null;
+    }
+
+    private void postTestNotification() {
+        try {
+            Context app = getApplicationContext();
+            Context w = LangHelper.wrap(app);
+            android.app.NotificationManager nm =
+                    (android.app.NotificationManager) app.getSystemService(
+                            Context.NOTIFICATION_SERVICE);
+            if (nm == null) return;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                android.app.NotificationChannel ch =
+                        new android.app.NotificationChannel("kodbalonu_test",
+                                w.getString(R.string.test_notif_title),
+                                android.app.NotificationManager.IMPORTANCE_DEFAULT);
+                nm.createNotificationChannel(ch);
+            }
+            Intent open = new Intent(app, MainActivity.class);
+            open.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                    | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            android.app.PendingIntent pi =
+                    android.app.PendingIntent.getActivity(app, 0, open,
+                            android.app.PendingIntent.FLAG_UPDATE_CURRENT
+                                    | android.app.PendingIntent.FLAG_IMMUTABLE);
+            android.app.Notification.Builder b;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                b = new android.app.Notification.Builder(app, "kodbalonu_test");
+            } else {
+                b = new android.app.Notification.Builder(app);
+            }
+            b.setContentTitle(w.getString(R.string.test_notif_title))
+                    .setContentText(w.getString(R.string.test_notif_text))
+                    .setSmallIcon(android.R.drawable.ic_dialog_info)
+                    .setContentIntent(pi)
+                    .setAutoCancel(true);
+            nm.notify(999, b.build());
+        } catch (Exception ignored) {
+        }
+    }
+
     private void addStatusRow(String label, boolean ok, boolean isOnOff) {
         LinearLayout row = new LinearLayout(this);
         row.setOrientation(LinearLayout.HORIZONTAL);
@@ -1027,30 +1172,6 @@ public class MainActivity extends Activity {
     private void refreshPermissions() {
         if (mPermContent == null) return;
         mPermContent.removeAllViews();
-        String brand = android.os.Build.MANUFACTURER == null
-                ? "" : android.os.Build.MANUFACTURER;
-        String brandCap = brand.isEmpty() ? ""
-                : brand.substring(0, 1).toUpperCase()
-                        + brand.substring(1).toLowerCase();
-        String oemTitle = brandCap.isEmpty()
-                ? getString(R.string.perm_oem_bg)
-                : brandCap + " \u2022 " + getString(R.string.perm_oem_bg);
-        permRow(mPermContent, oemTitle, null, getString(R.string.btn_open),
-                true, true, new View.OnClickListener() {
-                    @Override public void onClick(View v) {
-                        try {
-                            startActivity(oemBgIntent());
-                        } catch (Exception e) {
-                            try {
-                                startActivity(new Intent(
-                                        Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                                        Uri.parse("package:"
-                                                + getPackageName())));
-                            } catch (Exception ignored) {
-                            }
-                        }
-                    }
-                });
         final boolean sms = checkSelfPermission(Manifest.permission.RECEIVE_SMS)
                 == PackageManager.PERMISSION_GRANTED;
         permRow(mPermContent, getString(R.string.perm_sms), sms,
@@ -1102,16 +1223,6 @@ public class MainActivity extends Activity {
                                 Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS));
                     }
                 });
-        permRow(mPermContent, getString(R.string.perm_restricted), null,
-                getString(R.string.btn_open), true, true,
-                new View.OnClickListener() {
-                    @Override public void onClick(View v) {
-                        Intent i = new Intent(
-                                Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                                Uri.parse("package:" + getPackageName()));
-                        startActivity(i);
-                    }
-                });
         if (Build.VERSION.SDK_INT >= 35) {
             TextView note = new TextView(this);
             note.setText(getString(R.string.note_a15));
@@ -1154,7 +1265,7 @@ public class MainActivity extends Activity {
                                 ClipboardHelper.copy(MainActivity.this, cmd,
                                         false);
                                 Toast.makeText(MainActivity.this,
-                                        getString(R.string.btn_copy) + " ✓",
+                                        getString(R.string.btn_copy) + " \u2713",
                                         Toast.LENGTH_SHORT).show();
                             }
                         }));
@@ -1162,7 +1273,6 @@ public class MainActivity extends Activity {
                         ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT);
                 cmdLp.setMargins(0, dp(4), 0, dp(4));
-                cmdRow.setLayoutParams(cmdLp);
                 mPermContent.addView(cmdRow);
             }
         }
@@ -1171,6 +1281,47 @@ public class MainActivity extends Activity {
                 + (Settings.canDrawOverlays(this) ? 1 : 0)
                 + (isBgUnrestricted() ? 1 : 0);
         setSectionSubtitle("permissions", pok + "/5");
+        refreshExtraPerms();
+        refreshTopButton();
+    }
+
+    private void refreshExtraPerms() {
+        if (mExtraPermContent == null) return;
+        mExtraPermContent.removeAllViews();
+        String brand = android.os.Build.MANUFACTURER == null
+                ? "" : android.os.Build.MANUFACTURER;
+        String brandCap = brand.isEmpty() ? ""
+                : brand.substring(0, 1).toUpperCase()
+                        + brand.substring(1).toLowerCase();
+        String oemTitle = brandCap.isEmpty()
+                ? getString(R.string.perm_oem_bg)
+                : brandCap + " \u2022 " + getString(R.string.perm_oem_bg);
+        permRow(mExtraPermContent, oemTitle, null, getString(R.string.btn_open),
+                true, true, new View.OnClickListener() {
+                    @Override public void onClick(View v) {
+                        try {
+                            startActivity(oemBgIntent());
+                        } catch (Exception e) {
+                            try {
+                                startActivity(new Intent(
+                                        Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                                        Uri.parse("package:"
+                                                + getPackageName())));
+                            } catch (Exception ignored) {
+                            }
+                        }
+                    }
+                });
+        permRow(mExtraPermContent, getString(R.string.perm_restricted), null,
+                getString(R.string.btn_open), true, true,
+                new View.OnClickListener() {
+                    @Override public void onClick(View v) {
+                        Intent i = new Intent(
+                                Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                                Uri.parse("package:" + getPackageName()));
+                        startActivity(i);
+                    }
+                });
     }
 
     private void refreshStatus() {
@@ -1192,6 +1343,7 @@ public class MainActivity extends Activity {
         setSectionSubtitle("clipboard", enabled
                 ? getString(R.string.value_on)
                 : getString(R.string.value_off));
+        refreshTopButton();
     }
 
     private boolean isNotifAccessEnabled() {

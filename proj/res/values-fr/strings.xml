@@ -68,4 +68,10 @@
     <string name="app_name">Bulle de Code</string>
     <string name="btn_got_it">Compris</string>
     <string name="perm_oem_bg">Paramètre batterie en arrière-plan</string>
+    <string name="section_extra_perms">Autorisations supplémentaires (facultatives)</string>
+    <string name="tracking_active">✓ Suivi du presse-papiers actif</string>
+    <string name="ready_title">C’est prêt !</string>
+    <string name="ready_msg">Le suivi du presse-papiers a démarré. Nous vous enverrons une notification de test dans 10 secondes, vous pouvez quitter l’application.</string>
+    <string name="test_notif_title">Notification de test KodBalonu</string>
+    <string name="test_notif_text">Le suivi du presse-papiers est actif. Quand un code arrivera, la bulle apparaîtra ici.</string>
 </resources>

@@ -1,0 +1,13 @@
+KodBalonu catches verification codes from SMS and app notifications, copies them to the clipboard, and shows a draggable bubble.
+
+Long-press the code in the bubble and drag it onto a text field to drop the code there. Tap the code to copy it again. The bubble auto-closes after 90 seconds.
+
+Features:
+- SMS and notification code detection
+- Auto-copy to clipboard
+- Drag-and-drop bubble (drag onto a field to paste)
+- Clipboard watching for any copied number
+- History of detected codes, with per-entry copy and delete
+- Editable sensitive, ignored and cleanup phrase lists (12 languages)
+- Ignored apps and senders, broadcast option, sensitive-clipboard flag
+- No internet permission, no tracking, no ads. All data stays on the device.

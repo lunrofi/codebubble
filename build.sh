@@ -4,7 +4,9 @@
 # Set KODBALONU_KS_PASS to the keystore password before running.
 set -e
 DIR="$(cd "$(dirname "$0")" && pwd)"
-: "${KODBALONU_KS_PASS:?Set KODBALONU_KS_PASS first}"
+if [ "${KODBALONU_UNSIGNED:-0}" != "1" ]; then
+  : "${KODBALONU_KS_PASS:?Set KODBALONU_KS_PASS first}"
+fi
 export JAVA_HOME="${JAVA_HOME:-$HOME/opt/jdk17}"
 export PATH=$JAVA_HOME/bin:$PATH
 SDK="${ANDROID_SDK:-$HOME/android-sdk}"
@@ -36,13 +38,19 @@ with zipfile.ZipFile(apk, "a", zipfile.ZIP_DEFLATED) as z:
 print("added", dexes)
 PY
 
+$BT/zipalign -f 4 $OUT/unsigned.apk $OUT/kodbalonu-aligned.apk
+if [ "${KODBALONU_UNSIGNED:-0}" = "1" ]; then
+  echo "UNSIGNED BUILD (for F-Droid source builds; F-Droid signs it)"
+  ls -lh $OUT/kodbalonu-aligned.apk
+  exit 0
+fi
+
 KS=$DIR/kodbalonu.keystore
 if [ ! -f "$KS" ]; then
   keytool -genkeypair -keystore "$KS" -alias kodbalonu -keyalg RSA -keysize 2048 -validity 10000 \
     -storepass "$KODBALONU_KS_PASS" -keypass "$KODBALONU_KS_PASS" -dname "CN=KodBalonu, OU=KodBalonu, O=KodBalonu, C=TR"
 fi
 
-$BT/zipalign -f 4 $OUT/unsigned.apk $OUT/kodbalonu-aligned.apk
 $BT/apksigner sign --ks "$KS" --ks-pass pass:"$KODBALONU_KS_PASS" --key-pass pass:"$KODBALONU_KS_PASS" \
   --out $OUT/kodbalonu.apk $OUT/kodbalonu-aligned.apk
 $BT/apksigner verify $OUT/kodbalonu.apk && echo "VERIFY OK"

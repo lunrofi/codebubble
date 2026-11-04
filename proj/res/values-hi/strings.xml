@@ -68,4 +68,10 @@
     <string name="app_name">कोड बुलबुला</string>
     <string name="btn_got_it">समझ गया</string>
     <string name="perm_oem_bg">बैकग्राउंड बैटरी सेटिंग</string>
+    <string name="section_extra_perms">अतिरिक्त अनुमतियाँ (वैकल्पिक)</string>
+    <string name="tracking_active">✓ क्लिपबोर्ड ट्रैकिंग चालू है</string>
+    <string name="ready_title">तैयार हैं!</string>
+    <string name="ready_msg">क्लिपबोर्ड ट्रैकिंग शुरू हो गई है। हम 10 सेकंड में आपको एक परीक्षण सूचना भेजेंगे — आप ऐप से बाहर निकल सकते हैं।</string>
+    <string name="test_notif_title">KodBalonu परीक्षण सूचना</string>
+    <string name="test_notif_text">क्लिपबोर्ड ट्रैकिंग चालू है। कोड आने पर बुबुला यहाँ दिखाई देगा।</string>
 </resources>
