@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KodBalonu — Verification Codes in a Draggable Bubble</title>
 <meta name="description" content="KodBalonu catches verification codes from SMS and app notifications, copies them to the clipboard, and shows a draggable bubble. Drag the code onto any text field to paste it. Free, open source, no tracking.">
-<meta name="keywords" content="KodBalonu, CodeBubble, OTP, verification code, SMS code, one time password, clipboard bubble, drag and drop code, Android OTP app, 2FA helper">
+<meta name="keywords" content="KodBalonu, CodeBubble, OTP app, OTP helper, verification code app, SMS code app, auto copy OTP, automatic OTP copy, drag OTP code, otp bubble, otp code bubble android, sms verification code, one time password app, 2FA helper android, android otp autofill, copy verification code automatically, otp code catcher, sms code catcher, verification code bubble, otp code app android, auto fill verification code">
 <meta name="author" content="unsupportedx">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://unsupportedx.github.io/kodbalonu/">
@@ -48,7 +48,11 @@
     { "@type": "Question", "name": "Which Android versions are supported?",
       "acceptedAnswer": { "@type": "Answer", "text": "Android 8.0 and newer. The app is plain Java with no heavy libraries, about 237 KB." } },
     { "@type": "Question", "name": "Why does it need so many permissions?",
-      "acceptedAnswer": { "@type": "Answer", "text": "SMS and notification access detect codes, overlay permission draws the bubble, notification permission shows code alerts, and the battery exemption keeps tracking alive in the background. Two extra shortcuts (per-brand battery page, restricted settings) are optional." } }
+      "acceptedAnswer": { "@type": "Answer", "text": "SMS and notification access detect codes, overlay permission draws the bubble, notification permission shows code alerts, and the battery exemption keeps tracking alive in the background. Two extra shortcuts (per-brand battery page, restricted settings) are optional." } },
+    { "@type": "Question", "name": "How do I automatically copy OTP codes on Android?",
+      "acceptedAnswer": { "@type": "Answer", "text": "KodBalonu detects verification codes from SMS and app notifications and copies them to the clipboard automatically, so you can paste them without typing. The draggable bubble gives you the code on screen as well." } },
+    { "@type": "Question", "name": "Is there an app that lets me drag a verification code into a field?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. KodBalonu shows a draggable bubble with the code. Long-press the code and drop it directly onto the text field to paste it. If a field refuses drops, tap the code to copy it instead." } }
   ]
 }
 </script>
@@ -229,6 +233,8 @@
   <div class="faq"><h3>What if a field refuses the drop?</h3><p>Some fields (banking apps, some web forms) reject drag-and-drop. Tap the code in the bubble to copy it, then paste normally. That always works.</p></div>
   <div class="faq"><h3>Is it on Google Play or F-Droid?</h3><p>Not yet. Right now it is distributed from GitHub, and an IzzyOnDroid listing has been requested. The APK here is signed with the same key as every previous version, so future updates install over it.</p></div>
   <div class="faq"><h3>Which Android versions work?</h3><p>Android 8.0 and newer. On Android 15+, an extra note with two copyable ADB commands appears for enhanced notifications.</p></div>
+  <div class="faq"><h3>How do I automatically copy OTP codes on Android?</h3><p>KodBalonu detects verification codes from SMS and app notifications and copies them to the clipboard automatically, so you can paste them without typing. The draggable bubble gives you the code on screen as well.</p></div>
+  <div class="faq"><h3>Is there an app that lets me drag a verification code into a field?</h3><p>Yes. KodBalonu shows a draggable bubble with the code. Long-press the code and drop it directly onto the text field to paste it. If a field refuses drops, tap the code to copy it instead.</p></div>
 </section>
 
 <section id="download">
