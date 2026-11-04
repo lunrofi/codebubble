@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KodBalonu — Verification Codes in a Draggable Bubble</title>
+<meta name="description" content="KodBalonu catches verification codes from SMS and app notifications, copies them to the clipboard, and shows a draggable bubble. Drag the code onto any text field to paste it. Free, open source, no tracking.">
+<meta name="keywords" content="KodBalonu, CodeBubble, OTP, verification code, SMS code, one time password, clipboard bubble, drag and drop code, Android OTP app, 2FA helper">
+<meta name="author" content="unsupportedx">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://unsupportedx.github.io/kodbalonu/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="KodBalonu — Verification Codes in a Draggable Bubble">
+<meta property="og:description" content="Codes from SMS and notifications, in a bubble you can drag onto any text field. Free, open source, no tracking, no internet permission.">
+<meta property="og:url" content="https://unsupportedx.github.io/kodbalonu/">
+<meta property="og:image" content="https://unsupportedx.github.io/kodbalonu/icon.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="KodBalonu — Verification Codes in a Draggable Bubble">
+<meta name="twitter:description" content="Codes from SMS and notifications, in a bubble you can drag onto any text field. Free, open source, no tracking.">
+<link rel="icon" type="image/png" href="icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "KodBalonu",
+  "alternateName": "CodeBubble",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Android",
+  "author": { "@type": "Person", "name": "unsupportedx" },
+  "url": "https://unsupportedx.github.io/kodbalonu/",
+  "downloadUrl": "https://github.com/unsupportedx/kodbalonu/releases/download/v3.11/kodbalonu-3.11.apk",
+  "softwareVersion": "3.11",
+  "fileSize": "237 KB",
+  "license": "https://github.com/unsupportedx/kodbalonu/blob/main/LICENSE",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "KodBalonu catches verification codes from SMS and app notifications, copies them to the clipboard, and shows a draggable bubble. Long-press the code and drag it onto a text field to paste it."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Does KodBalonu upload my codes anywhere?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. KodBalonu has no internet permission. Codes are detected on your device, copied to your clipboard, and kept in a local history. Nothing leaves your phone." } },
+    { "@type": "Question", "name": "How is the bubble different from copy-paste?",
+      "acceptedAnswer": { "@type": "Answer", "text": "When a code arrives, a bubble pops up on screen. Long-press the code and drag it directly onto the text field to drop it there. If a field refuses drops, tap the code to copy it again." } },
+    { "@type": "Question", "name": "Which Android versions are supported?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Android 8.0 and newer. The app is plain Java with no heavy libraries, about 237 KB." } },
+    { "@type": "Question", "name": "Why does it need so many permissions?",
+      "acceptedAnswer": { "@type": "Answer", "text": "SMS and notification access detect codes, overlay permission draws the bubble, notification permission shows code alerts, and the battery exemption keeps tracking alive in the background. Two extra shortcuts (per-brand battery page, restricted settings) are optional." } }
+  ]
+}
+</script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #050508; color: #E4E6EB; line-height: 1.6;
+  }
+  a { color: #64B5F6; }
+  .glow {
+    background: radial-gradient(ellipse 700px 340px at 50% -60px, #2A1650 0%, #0A0A12 55%, #050508 100%);
+  }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+  header { display: flex; align-items: center; gap: 14px; padding: 26px 0 10px; }
+  header img { width: 56px; height: 56px; border-radius: 14px; }
+  header .name { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; }
+  header nav { margin-left: auto; display: flex; gap: 18px; font-size: 15px; }
+  header nav a { color: #9CA3AF; text-decoration: none; }
+  header nav a:hover { color: #fff; }
+  .hero { text-align: center; padding: 56px 0 30px; }
+  .badge {
+    display: inline-block; font-size: 13px; letter-spacing: 0.4px;
+    padding: 6px 14px; border-radius: 999px;
+    border: 1px solid #A855F7; color: #D8B4FE; background: rgba(168,85,247,0.12);
+  }
+  h1 { font-size: clamp(38px, 7vw, 64px); line-height: 1.08; letter-spacing: -1px; margin: 22px 0 14px; }
+  h1 span { background: linear-gradient(90deg, #A855F7, #3B82F6, #EC4899); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .tagline { font-size: 19px; color: #9CA3AF; max-width: 640px; margin: 0 auto; }
+  .cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 30px; }
+  .btn {
+    display: inline-block; padding: 15px 30px; border-radius: 16px; font-size: 17px;
+    font-weight: 700; text-decoration: none; transition: transform 0.1s;
+  }
+  .btn:hover { transform: scale(0.97); }
+  .btn-primary { background: #1E88E5; color: #fff; }
+  .btn-ghost { border: 2px solid #1E88E5; color: #64B5F6; }
+  .meta { margin-top: 18px; color: #9CA3AF; font-size: 14px; }
+  .demo { padding: 34px 0 10px; text-align: center; }
+  .demo video {
+    width: 300px; max-width: 88vw; border-radius: 28px;
+    border: 2px solid transparent;
+    background: linear-gradient(#14141E, #14141E) padding-box,
+      linear-gradient(135deg, #A855F7, #3B82F6, #EC4899) border-box;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.55);
+  }
+  .demo p { color: #9CA3AF; font-size: 14px; margin-top: 12px; }
+  section { padding: 54px 0 10px; }
+  h2 { font-size: 30px; letter-spacing: -0.5px; margin-bottom: 8px; }
+  .sec-sub { color: #9CA3AF; margin-bottom: 26px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .card {
+    background: #14141E; border-radius: 26px; padding: 22px;
+    border: 2px solid transparent;
+    background: linear-gradient(#14141E, #14141E) padding-box,
+      linear-gradient(135deg, rgba(168,85,247,0.55), rgba(59,130,246,0.55), rgba(236,72,153,0.55)) border-box;
+  }
+  .card .ico { font-size: 26px; margin-bottom: 8px; }
+  .card h3 { font-size: 18px; margin-bottom: 6px; }
+  .card p { color: #9CA3AF; font-size: 15px; }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .step { background: #14141E; border-radius: 22px; padding: 22px; }
+  .step .n {
+    width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; font-weight: 800; color: #fff; margin-bottom: 12px;
+    background: linear-gradient(135deg, #A855F7, #3B82F6);
+  }
+  .step h3 { margin-bottom: 6px; }
+  .step p { color: #9CA3AF; font-size: 15px; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th, td { text-align: left; padding: 12px 10px; border-bottom: 1px solid #2A2A35; vertical-align: top; }
+  th { color: #9CA3AF; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .faq { background: #14141E; border-radius: 22px; padding: 22px; margin-bottom: 14px; }
+  .faq h3 { margin-bottom: 6px; }
+  .faq p { color: #9CA3AF; font-size: 15px; }
+  .dl-box {
+    text-align: center; background: linear-gradient(135deg, #1E1B4B, #0C4A6E);
+    border-radius: 28px; padding: 44px 24px;
+  }
+  .dl-box h2 { margin-bottom: 10px; }
+  .dl-box p { color: #CBD5E1; }
+  code { background: #1E2025; padding: 2px 8px; border-radius: 8px; font-size: 13px; word-break: break-all; }
+  .hash { margin-top: 18px; font-size: 13px; color: #9CA3AF; }
+  footer { text-align: center; color: #9CA3AF; font-size: 14px; padding: 50px 0 34px; }
+  @media (max-width: 640px) { header nav { display: none; } }
+</style>
+</head>
+<body>
+<div class="glow">
+<div class="wrap">
+
+<header>
+  <img src="icon.png" alt="KodBalonu icon">
+  <div class="name">KodBalonu</div>
+  <nav>
+    <a href="#features">Features</a>
+    <a href="#how">How it works</a>
+    <a href="#privacy">Privacy</a>
+    <a href="#download">Download</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="badge">OPEN SOURCE &middot; MIT &middot; ANDROID 8.0+</div>
+  <h1>Verification codes,<br>in a <span>draggable bubble.</span></h1>
+  <p class="tagline">KodBalonu catches codes from SMS and app notifications, copies them to the clipboard, and pops up a bubble. Long-press the code and drag it onto any text field to paste it there.</p>
+  <div class="cta">
+    <a class="btn btn-primary" href="https://github.com/unsupportedx/kodbalonu/releases/download/v3.11/kodbalonu-3.11.apk">Download KodBalonu 3.11</a>
+    <a class="btn btn-ghost" href="https://github.com/unsupportedx/kodbalonu">View source on GitHub</a>
+  </div>
+  <p class="meta">Free &middot; ~237 KB &middot; No account &middot; No tracking &middot; 12 languages</p>
+</div>
+
+<div class="demo">
+  <video src="demo_drag.mp4" autoplay loop muted playsinline></video>
+  <p>How it works: a code arrives, the bubble pops up, you drag it onto the field. (Schematic demo, not a screen recording.)</p>
+</div>
+
+<section id="features">
+  <h2>Everything it does</h2>
+  <p class="sec-sub">One small app, no heavy libraries, plain Java. Every feature below is in version 3.11.</p>
+  <div class="grid">
+    <div class="card"><div class="ico">&#9993;</div><h3>SMS detection</h3><p>Listens for incoming SMS messages containing a verification code.</p></div>
+    <div class="card"><div class="ico">&#128276;</div><h3>Notification detection</h3><p>Catches codes from app notifications too, not just SMS.</p></div>
+    <div class="card"><div class="ico">&#128203;</div><h3>Auto-copy</h3><p>Detected codes are copied to the clipboard automatically.</p></div>
+    <div class="card"><div class="ico">&#128302;</div><h3>Drag-and-drop bubble</h3><p>Drag the bubble to move it. Long-press the code and drop it onto a text field to paste. Tap to copy again. Auto-closes after 90 seconds.</p></div>
+    <div class="card"><div class="ico">&#128204;</div><h3>Clipboard watching</h3><p>A bubble also appears for any number you copy anywhere on the device.</p></div>
+    <div class="card"><div class="ico">&#128221;</div><h3>Code notifications</h3><p>A notification shows the code, with Copy and Ignore actions.</p></div>
+    <div class="card"><div class="ico">&#128193;</div><h3>History</h3><p>The last 50 detected codes, with time, source and message snippet. Copy again or delete per entry.</p></div>
+    <div class="card"><div class="ico">&#9998;</div><h3>Editable phrase lists</h3><p>Sensitive, ignored and cleanup phrases are editable, in 12 languages, with regex matching.</p></div>
+    <div class="card"><div class="ico">&#128683;</div><h3>Ignored apps &amp; senders</h3><p>Ignore codes from selected apps or SMS senders.</p></div>
+    <div class="card"><div class="ico">&#128225;</div><h3>Broadcast option</h3><p>Optionally broadcasts detected codes for automation apps.</p></div>
+    <div class="card"><div class="ico">&#128274;</div><h3>Sensitive clipboard</h3><p>Optionally marks clipboard entries as sensitive on Android 13+.</p></div>
+    <div class="card"><div class="ico">&#127769;</div><h3>Light &amp; dark mode</h3><p>Glass-style design with a light/dark toggle, remembered across launches.</p></div>
+    <div class="card"><div class="ico">&#128241;</div><h3>Per-brand battery shortcut</h3><p>One tap to the right background-battery page for Samsung, Xiaomi, Huawei, Oppo, Vivo and others.</p></div>
+    <div class="card"><div class="ico">&#10003;</div><h3>Ready notice + test</h3><p>When tracking starts, a "You're ready" notice appears and a test notification arrives 10 seconds later.</p></div>
+  </div>
+</section>
+
+<section id="how">
+  <h2>How it works</h2>
+  <p class="sec-sub">Three steps, then you never type a code by hand again.</p>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><h3>Grant 5 permissions</h3><p>SMS, send notifications, read notifications, display over other apps, and battery exemption. The big start button stays dimmed until all five are granted.</p></div>
+    <div class="step"><div class="n">2</div><h3>Start tracking</h3><p>Tap the start button at the top. A "You're ready" notice appears, and a test notification arrives 10 seconds later so you can leave the app and see it work.</p></div>
+    <div class="step"><div class="n">3</div><h3>Drag the code</h3><p>When a code arrives, the bubble pops up. Drag the code onto the field to paste it. If a field refuses drops, tap the code to copy it instead.</p></div>
+  </div>
+</section>
+
+<section id="permissions">
+  <h2>Permissions, explained</h2>
+  <p class="sec-sub">Nothing here is used for anything but catching codes on your device.</p>
+  <table>
+    <tr><th>Permission</th><th>Why it is needed</th><th>Required?</th></tr>
+    <tr><td>Receive SMS</td><td>Detect codes in incoming text messages.</td><td>Yes</td></tr>
+    <tr><td>Send notifications</td><td>Show code alerts and the test notification.</td><td>Yes</td></tr>
+    <tr><td>Read notifications</td><td>Detect codes in app notifications.</td><td>Yes</td></tr>
+    <tr><td>Display over other apps</td><td>Draw the draggable bubble on top of other apps.</td><td>Yes</td></tr>
+    <tr><td>Ignore battery optimization</td><td>Keep tracking alive in the background.</td><td>Yes</td></tr>
+    <tr><td>Per-brand battery page</td><td>Shortcut to your brand's own battery settings.</td><td>Optional</td></tr>
+    <tr><td>Restricted settings</td><td>Needed on some devices to grant the above.</td><td>Optional</td></tr>
+  </table>
+</section>
+
+<section id="privacy">
+  <h2>Privacy</h2>
+  <p class="sec-sub">The whole point of KodBalonu is that your codes never leave your phone.</p>
+  <div class="grid">
+    <div class="card"><div class="ico">&#128274;</div><h3>No internet permission</h3><p>The app literally cannot send anything anywhere. There is no server, no account, no analytics.</p></div>
+    <div class="card"><div class="ico">&#128196;</div><h3>Everything on-device</h3><p>Detection, clipboard, history and settings all live on your phone. History auto-cleans after 30 days if you enable it.</p></div>
+    <div class="card"><div class="ico">&lt;/&gt;</div><h3>Open source</h3><p>MIT licensed. Read every line, build it yourself with the included script, no Gradle required.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Questions, answered</h2>
+  <div class="faq"><h3>Does KodBalonu upload my codes anywhere?</h3><p>No. It has no internet permission. Codes are detected on your device, copied to your clipboard, and kept in a local history. Nothing leaves your phone.</p></div>
+  <div class="faq"><h3>What if a field refuses the drop?</h3><p>Some fields (banking apps, some web forms) reject drag-and-drop. Tap the code in the bubble to copy it, then paste normally. That always works.</p></div>
+  <div class="faq"><h3>Is it on Google Play or F-Droid?</h3><p>Not yet. Right now it is distributed from GitHub, and an IzzyOnDroid listing has been requested. The APK here is signed with the same key as every previous version, so future updates install over it.</p></div>
+  <div class="faq"><h3>Which Android versions work?</h3><p>Android 8.0 and newer. On Android 15+, an extra note with two copyable ADB commands appears for enhanced notifications.</p></div>
+</section>
+
+<section id="download">
+  <div class="dl-box">
+    <h2>Download KodBalonu 3.11</h2>
+    <p>Free, open source, ~237 KB. Requires Android 8.0 or newer.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="https://github.com/unsupportedx/kodbalonu/releases/download/v3.11/kodbalonu-3.11.apk">Download APK (237 KB)</a>
+    </div>
+    <p class="hash">APK SHA-256:<br><code>7be341d8f1584c44af1ac2bf14e2624c8eb0daf66b06ac107c4dc2040508df49</code></p>
+    <p class="hash">Signing certificate SHA-256:<br><code>be99f7966d997ce81fbb64978d04346718658c8926b0746cd960d60392ef04e9</code></p>
+    <p class="meta">Also on <a href="https://github.com/unsupportedx/kodbalonu/releases/tag/v3.11">GitHub Releases</a> &middot; Source: <a href="https://github.com/unsupportedx/kodbalonu">unsupportedx/kodbalonu</a></p>
+  </div>
+</section>
+
+<footer>
+  KodBalonu &middot; by unsupportedx &middot; MIT License &middot;
+  <a href="https://github.com/unsupportedx/kodbalonu">GitHub</a>
+</footer>
+
+</div>
+</div>
+</body>
+</html>
