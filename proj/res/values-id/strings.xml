@@ -51,4 +51,21 @@
     <string name="clipboard_running_text">Memantau papan klip: gelembung muncul saat nomor disalin.</string>
     <string name="lang_system">Bahasa sistem</string>
     <string name="note_text">Catatan: Beberapa bidang (terutama bank dan web) mungkin tidak menerima kode seret dan letakkan. Ketuk gelembung untuk menyalin, lalu tekan lama bidang untuk menempel.</string>
+    <string name="app_tagline">Menangkap kode, menampilkan gelembung</string>
+    <string name="section_ignored_phrases">Frasa yang diabaikan</string>
+    <string name="ignored_phrases_desc">Jika pesan mengandung salah satu dari ini, pesan akan sepenuhnya diabaikan.</string>
+    <string name="section_cleanup_phrases">Frasa pembersihan</string>
+    <string name="cleanup_phrases_desc">Ini dihapus dari pesan sebelum deteksi.</string>
+    <string name="perm_sms">SMS</string>
+    <string name="perm_post_notif">Mengirim notifikasi</string>
+    <string name="perm_read_notif">Membaca notifikasi</string>
+    <string name="perm_overlay_row">Tampil di atas aplikasi lain</string>
+    <string name="perm_background">Berjalan di latar belakang</string>
+    <string name="perm_restricted">Izinkan setelan terbatas</string>
+    <string name="btn_request">Minta</string>
+    <string name="btn_open">Buka</string>
+    <string name="btn_copy">Salin</string>
+    <string name="app_name">Gelembung Kode</string>
+    <string name="btn_got_it">Mengerti</string>
+    <string name="perm_oem_bg">Setelan baterai latar belakang</string>
 </resources>

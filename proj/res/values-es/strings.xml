@@ -51,4 +51,21 @@
     <string name="clipboard_running_text">Vigilando el portapapeles: aparece una burbuja cuando se copia un número.</string>
     <string name="lang_system">Idioma del sistema</string>
     <string name="note_text">Nota: Algunos campos (especialmente algunos bancarios y web) pueden no aceptar códigos de arrastrar y soltar. En ese caso toca la burbuja para copiar y mantén pulsado el campo para pegar.</string>
+    <string name="app_tagline">Captura códigos, muestra una burbuja</string>
+    <string name="section_ignored_phrases">Frases ignoradas</string>
+    <string name="ignored_phrases_desc">Si un mensaje contiene alguna de estas, se ignorará por completo.</string>
+    <string name="section_cleanup_phrases">Frases de limpieza</string>
+    <string name="cleanup_phrases_desc">Estas se eliminan de los mensajes antes de la detección.</string>
+    <string name="perm_sms">SMS</string>
+    <string name="perm_post_notif">Enviar notificaciones</string>
+    <string name="perm_read_notif">Leer notificaciones</string>
+    <string name="perm_overlay_row">Mostrar sobre otras apps</string>
+    <string name="perm_background">Ejecutar en segundo plano</string>
+    <string name="perm_restricted">Permitir ajustes restringidos</string>
+    <string name="btn_request">Solicitar</string>
+    <string name="btn_open">Abrir</string>
+    <string name="btn_copy">Copiar</string>
+    <string name="app_name">Burbuja de Código</string>
+    <string name="btn_got_it">Entendido</string>
+    <string name="perm_oem_bg">Ajuste de batería en segundo plano</string>
 </resources>

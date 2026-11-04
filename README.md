@@ -6,16 +6,16 @@
 copies them to the clipboard, and shows a draggable bubble. Long-press the
 code in the bubble and drag it onto a text field to drop the code there.
 
-- **Version:** 3.0 (version code 3)
-- **Download:** [kodbalonu-3.0.apk](releases/kodbalonu-3.0.apk)
+- **Version:** 3.10 (version code 13)
+- **Download:** [kodbalonu-3.10.apk](releases/kodbalonu-3.10.apk)
 - **Package:** `com.bmo.kodbalonu`
 - **Min SDK:** 26 (Android 8.0) · **Target SDK:** 34 (Android 14)
-- **Size:** ~153 KB — no heavy libraries, plain Java, no Gradle needed
+- **Size:** ~229 KB — no heavy libraries, plain Java, no Gradle needed
 - **License:** MIT (see [LICENSE](LICENSE))
 
 > KodBalonu is written from scratch. It does not contain code from any
 > other code-catcher app. The sensitive-phrase list is a generic list of
-> common code terms in Turkish, English and Spanish.
+> common code terms in 12 languages (221 default terms).
 
 ## Features
 
@@ -51,6 +51,25 @@ code in the bubble and drag it onto a text field to drop the code there.
 - **12 languages** — English (default), Turkish, Spanish, German, French,
   Italian, Portuguese, Russian, Arabic, Hindi, Indonesian and Chinese.
   Choose **System language** in the app to follow the phone's language.
+- **Ignored phrases** — messages containing one of 16 default ignored
+  phrases are skipped entirely (e.g. discount codes, version codes).
+- **Cleanup phrases** — 6 default rules applied before detection, so
+  quotes and wrappers are stripped and codes come out clean.
+- **Regex phrase matching** — sensitive phrases match as regular
+  expressions, with a literal-contains fallback.
+- **Glass design + light/dark mode** — dark glass cards with gradient
+  glowing borders, circular gradient section icons, and a moon/sun
+  toggle (choice remembered). Dark is the default.
+- **First-run demo video** — a 7-second in-app video shows the
+  drag-and-drop gesture once on first launch, dismissible with "Got it".
+- **Per-brand background battery shortcut** — the top row of the
+  Permissions screen opens the right battery/autostart page for the
+  phone's brand (Samsung, Xiaomi, Huawei, Oppo, Vivo, or system
+  battery settings), so the app is not killed in the background.
+- **Localized app name** — the launcher label follows the system
+  language (e.g. KodBalonu in Turkish, CodeBubble in English).
+- **Android 15+ note** — on Android 15+, the Permissions screen shows
+  Enhanced Notifications guidance with two copyable ADB commands.
 
 ## Permissions
 
@@ -105,13 +124,14 @@ proj/
     BootReceiver.java            # restart watching after reboot
     LangHelper.java              # language selection
   res/
-    drawable/ic_launcher.png     # app icon (AI-generated, see icon.png)
+    drawable/ic_launcher.png     # app icon (magic wand, see icon.png)
     values/strings.xml           # English (default)
     values-tr/ values-es/ values-de/ values-fr/ values-it/
     values-pt/ values-ru/ values-ar/ values-hi/ values-id/
     values-zh/                   # translations
     xml/accessibility_service_config.xml
-releases/kodbalonu-3.0.apk      # signed release APK
+    raw/demo_drag.mp4          # first-run drag-and-drop demo video
+releases/kodbalonu-3.10.apk     # signed release APK
 ```
 
 ## Known limitations

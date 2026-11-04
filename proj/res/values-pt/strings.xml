@@ -51,4 +51,21 @@
     <string name="clipboard_running_text">Monitorando a área de transferência: um balão aparece quando um número é copiado.</string>
     <string name="lang_system">Idioma do sistema</string>
     <string name="note_text">Observação: Alguns campos (especialmente bancários e web) podem não aceitar códigos arrastados. Toque no balão para copiar e segure o campo para colar.</string>
+    <string name="app_tagline">Captura códigos, mostra um balão</string>
+    <string name="section_ignored_phrases">Frases ignoradas</string>
+    <string name="ignored_phrases_desc">Se uma mensagem contiver alguma destas, ela será completamente ignorada.</string>
+    <string name="section_cleanup_phrases">Frases de limpeza</string>
+    <string name="cleanup_phrases_desc">Estas são removidas das mensagens antes da detecção.</string>
+    <string name="perm_sms">SMS</string>
+    <string name="perm_post_notif">Enviar notificações</string>
+    <string name="perm_read_notif">Ler notificações</string>
+    <string name="perm_overlay_row">Exibir sobre outros apps</string>
+    <string name="perm_background">Executar em segundo plano</string>
+    <string name="perm_restricted">Permitir configurações restritas</string>
+    <string name="btn_request">Solicitar</string>
+    <string name="btn_open">Abrir</string>
+    <string name="btn_copy">Copiar</string>
+    <string name="app_name">Bolha de Código</string>
+    <string name="btn_got_it">Entendi</string>
+    <string name="perm_oem_bg">Configuração de bateria em segundo plano</string>
 </resources>

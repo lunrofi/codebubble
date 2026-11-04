@@ -51,4 +51,22 @@
     <string name="clipboard_running_text">Pano izleniyor: sayı kopyalanınca baloncuk çıkar.</string>
     <string name="lang_system">Sistem dili</string>
     <string name="note_text">Not: Bazı alanlar (özellikle bazı banka ve web alanları) sürükle-bırak ile kodu kabul etmeyebilir. O durumda baloncuğa dokunup kopyala, alana uzun basıp yapıştır.</string>
+    <string name="app_tagline">Kodları yakalar, baloncuk çıkarır</string>
+    <string name="section_ignored_phrases">Yoksayılan ifadeler</string>
+    <string name="ignored_phrases_desc">Bir mesaj bunlardan birini içeriyorsa tamamen yoksayılır.</string>
+    <string name="section_cleanup_phrases">Temizleme ifadeleri</string>
+    <string name="cleanup_phrases_desc">Bunlar algılamadan önce mesajlardan kaldırılır.</string>
+    <string name="perm_sms">SMS</string>
+    <string name="perm_post_notif">Bildirim gönderme</string>
+    <string name="perm_read_notif">Bildirimleri okuma</string>
+    <string name="perm_overlay_row">Diğer uygulamaların üzerinde gösterme</string>
+    <string name="perm_background">Arkaplanda çalışma</string>
+    <string name="perm_restricted">Kısıtlanmış ayarlara izin ver</string>
+    <string name="btn_request">İste</string>
+    <string name="btn_open">Aç</string>
+    <string name="btn_copy">Kopyala</string>
+    <string name="note_a15">Android 15\'ten itibaren, telefon ayarlarında yeni "Gelişmiş Bildirimler" ayarını devre dışı bırakmanız veya aşağıdaki ADB komutlarını çalıştırıp uygulamayı tekrar açmanız gerekir. ADB\'yi bilmiyorsanız, bildirim okuma olmadan da SMS ile kod yakalama çalışmaya devam eder.</string>
+    <string name="app_name">KodBalonu</string>
+    <string name="btn_got_it">Anladım</string>
+    <string name="perm_oem_bg">Arka plan pil ayarı</string>
 </resources>

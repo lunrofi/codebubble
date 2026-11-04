@@ -51,4 +51,21 @@
     <string name="clipboard_running_text">क्लिपबोर्ड निगरानी: नंबर कॉपी होने पर बुलबुला दिखाई देता है।</string>
     <string name="lang_system">सिस्टम भाषा</string>
     <string name="note_text">नोट: कुछ फ़ील्ड (विशेषकर बैंक और वेब फ़ील्ड) खींचकर छोड़े गए कोड स्वीकार नहीं कर सकते। तब बुलबुले को छूकर कॉपी करें, फिर फ़ील्ड को देर तक दबाकर पेस्ट करें।</string>
+    <string name="app_tagline">कोड पकड़ता है, बुलबुला दिखाता है</string>
+    <string name="section_ignored_phrases">अनदेखा किए जाने वाले वाक्यांश</string>
+    <string name="ignored_phrases_desc">यदि किसी संदेश में इनमें से कोई है, तो उसे पूरी तरह अनदेखा कर दिया जाता है।</string>
+    <string name="section_cleanup_phrases">सफाई वाक्यांश</string>
+    <string name="cleanup_phrases_desc">पता लगाने से पहले इन्हें संदेशों से हटा दिया जाता है।</string>
+    <string name="perm_sms">SMS</string>
+    <string name="perm_post_notif">सूचनाएं भेजना</string>
+    <string name="perm_read_notif">सूचनाएं पढ़ना</string>
+    <string name="perm_overlay_row">अन्य ऐप्स के ऊपर दिखाना</string>
+    <string name="perm_background">बैकग्राउंड में चलाना</string>
+    <string name="perm_restricted">प्रतिबंधित सेटिंग्स की अनुमति दें</string>
+    <string name="btn_request">अनुरोध करें</string>
+    <string name="btn_open">खोलें</string>
+    <string name="btn_copy">कॉपी करें</string>
+    <string name="app_name">कोड बुलबुला</string>
+    <string name="btn_got_it">समझ गया</string>
+    <string name="perm_oem_bg">बैकग्राउंड बैटरी सेटिंग</string>
 </resources>

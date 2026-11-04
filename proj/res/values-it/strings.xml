@@ -51,4 +51,21 @@
     <string name="clipboard_running_text">Monitoraggio appunti: compare una bolla quando viene copiato un numero.</string>
     <string name="lang_system">Lingua di sistema</string>
     <string name="note_text">Nota: Alcuni campi (specialmente bancari e web) potrebbero non accettare codici trascinati. Tocca la bolla per copiare, poi tieni premuto il campo per incollare.</string>
+    <string name="app_tagline">Cattura i codici, mostra una bolla</string>
+    <string name="section_ignored_phrases">Frasi ignorate</string>
+    <string name="ignored_phrases_desc">Se un messaggio ne contiene una, viene completamente ignorato.</string>
+    <string name="section_cleanup_phrases">Frasi di pulizia</string>
+    <string name="cleanup_phrases_desc">Queste vengono rimosse dai messaggi prima del rilevamento.</string>
+    <string name="perm_sms">SMS</string>
+    <string name="perm_post_notif">Inviare notifiche</string>
+    <string name="perm_read_notif">Leggere le notifiche</string>
+    <string name="perm_overlay_row">Mostra sopra altre app</string>
+    <string name="perm_background">Esecuzione in background</string>
+    <string name="perm_restricted">Consenti impostazioni limitate</string>
+    <string name="btn_request">Richiedi</string>
+    <string name="btn_open">Apri</string>
+    <string name="btn_copy">Copia</string>
+    <string name="app_name">Bolla di Codice</string>
+    <string name="btn_got_it">Capito</string>
+    <string name="perm_oem_bg">Impostazione batteria in background</string>
 </resources>

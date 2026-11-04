@@ -51,4 +51,21 @@
     <string name="clipboard_running_text">Отслеживание буфера: окно появляется при копировании номера.</string>
     <string name="lang_system">Язык системы</string>
     <string name="note_text">Примечание: некоторые поля (особенно банковские и веб-поля) могут не принимать коды перетаскиванием. Коснитесь окна, чтобы скопировать, затем удерживайте поле, чтобы вставить.</string>
+    <string name="app_tagline">Перехватывает коды, показывает окно</string>
+    <string name="section_ignored_phrases">Игнорируемые фразы</string>
+    <string name="ignored_phrases_desc">Если сообщение содержит любую из них, оно полностью игнорируется.</string>
+    <string name="section_cleanup_phrases">Фразы очистки</string>
+    <string name="cleanup_phrases_desc">Они удаляются из сообщений перед обнаружением.</string>
+    <string name="perm_sms">SMS</string>
+    <string name="perm_post_notif">Отправка уведомлений</string>
+    <string name="perm_read_notif">Чтение уведомлений</string>
+    <string name="perm_overlay_row">Показ поверх других приложений</string>
+    <string name="perm_background">Работа в фоне</string>
+    <string name="perm_restricted">Разрешить ограниченные настройки</string>
+    <string name="btn_request">Запросить</string>
+    <string name="btn_open">Открыть</string>
+    <string name="btn_copy">Копировать</string>
+    <string name="app_name">Код-пузырь</string>
+    <string name="btn_got_it">Понятно</string>
+    <string name="perm_oem_bg">Настройка батареи для фона</string>
 </resources>

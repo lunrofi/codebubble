@@ -51,4 +51,21 @@
     <string name="clipboard_running_text">正在监控剪贴板：复制数字时会出现气泡。</string>
     <string name="lang_system">系统语言</string>
     <string name="note_text">注意：某些字段（尤其是银行和网页字段）可能不支持拖放验证码。此时请点击气泡复制，然后长按字段粘贴。</string>
+    <string name="app_tagline">捕获验证码，显示气泡</string>
+    <string name="section_ignored_phrases">忽略短语</string>
+    <string name="ignored_phrases_desc">如果消息包含其中任何一项，将被完全忽略。</string>
+    <string name="section_cleanup_phrases">清理短语</string>
+    <string name="cleanup_phrases_desc">这些会在检测前从消息中删除。</string>
+    <string name="perm_sms">SMS</string>
+    <string name="perm_post_notif">发送通知</string>
+    <string name="perm_read_notif">读取通知</string>
+    <string name="perm_overlay_row">在其他应用上层显示</string>
+    <string name="perm_background">后台运行</string>
+    <string name="perm_restricted">允许受限设置</string>
+    <string name="btn_request">请求</string>
+    <string name="btn_open">打开</string>
+    <string name="btn_copy">复制</string>
+    <string name="app_name">代码气泡</string>
+    <string name="btn_got_it">明白了</string>
+    <string name="perm_oem_bg">后台电池设置</string>
 </resources>

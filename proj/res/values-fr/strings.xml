@@ -51,4 +51,21 @@
     <string name="clipboard_running_text">Surveillance du presse-papiers : une bulle apparaît quand un numéro est copié.</string>
     <string name="lang_system">Langue du système</string>
     <string name="note_text">Remarque : Certains champs (notamment bancaires et web) peuvent ne pas accepter les codes par glisser-déposer. Touchez alors la bulle pour copier, puis maintenez le champ pour coller.</string>
+    <string name="app_tagline">Capture les codes, affiche une bulle</string>
+    <string name="section_ignored_phrases">Phrases ignorées</string>
+    <string name="ignored_phrases_desc">Si un message contient l\'une d\'elles, il est complètement ignoré.</string>
+    <string name="section_cleanup_phrases">Phrases de nettoyage</string>
+    <string name="cleanup_phrases_desc">Celles-ci sont supprimées des messages avant la détection.</string>
+    <string name="perm_sms">SMS</string>
+    <string name="perm_post_notif">Envoyer des notifications</string>
+    <string name="perm_read_notif">Lire les notifications</string>
+    <string name="perm_overlay_row">Afficher par-dessus les autres applis</string>
+    <string name="perm_background">Exécuter en arrière-plan</string>
+    <string name="perm_restricted">Autoriser les paramètres restreints</string>
+    <string name="btn_request">Demander</string>
+    <string name="btn_open">Ouvrir</string>
+    <string name="btn_copy">Copier</string>
+    <string name="app_name">Bulle de Code</string>
+    <string name="btn_got_it">Compris</string>
+    <string name="perm_oem_bg">Paramètre batterie en arrière-plan</string>
 </resources>
