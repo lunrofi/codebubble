@@ -1,6 +1,5 @@
 # CodeBubble
 
-> Formerly KodBalonu — renamed to CodeBubble in v3.12 with a new package (`com.bmo.codebubble`). Existing KodBalonu users need to reinstall; the new package does not update over the old one.
 
 ![CodeBubble icon](icon.png)
 
