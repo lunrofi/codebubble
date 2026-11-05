@@ -7,8 +7,8 @@
 copies them to the clipboard, and shows a draggable bubble. Long-press the
 code in the bubble and drag it onto a text field to drop the code there.
 
-- **Version:** 3.12 (version code 15)
-- **Download:** [codebubble-3.12.apk](releases/codebubble-3.12.apk)
+- **Version:** 1.0 (version code 1)
+- **Download:** [codebubble-1.0.apk](releases/codebubble-1.0.apk)
 - **Package:** `com.bmo.codebubble`
 - **Min SDK:** 26 (Android 8.0) · **Target SDK:** 34 (Android 14)
 - **Size:** ~237 KB — no heavy libraries, plain Java, no Gradle needed
@@ -140,7 +140,7 @@ proj/
     values-zh/                   # translations
     xml/accessibility_service_config.xml
     raw/demo_drag.mp4          # first-run drag-and-drop demo video
-releases/codebubble-3.12.apk     # signed release APK
+releases/codebubble-1.0.apk     # signed release APK
 ```
 
 ## Known limitations
