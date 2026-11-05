@@ -154,4 +154,4 @@ releases/codebubble-3.12.apk     # signed release APK
 
 ## License
 
-MIT — see [LICENSE](LICENSE). Copyright (c) 2026 unsupportedx.
+MIT — see [LICENSE](LICENSE). Copyright (c) 2026 lunrofi.
