@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — CodeBubble</title>
+<meta name="description" content="Privacy Policy for CodeBubble: what the app accesses on your device, what it never collects, and what never leaves your phone.">
+<meta name="author" content="lunrofi">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://lunrofi.github.io/codebubble/privacy-policy.html">
+<link rel="icon" type="image/png" href="icon.png">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #050508; color: #E4E6EB; line-height: 1.7;
+  }
+  a { color: #64B5F6; }
+  .glow {
+    background: radial-gradient(ellipse 700px 340px at 50% -60px, #2A1650 0%, #0A0A12 55%, #050508 100%);
+  }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 0 20px; }
+  header { display: flex; align-items: center; gap: 14px; padding: 26px 0 10px; }
+  header img { width: 56px; height: 56px; border-radius: 14px; }
+  header .name { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; }
+  header nav { margin-left: auto; display: flex; gap: 18px; font-size: 15px; }
+  header nav a { color: #9CA3AF; text-decoration: none; }
+  header nav a:hover { color: #fff; }
+  h1 { font-size: clamp(32px, 6vw, 48px); line-height: 1.12; letter-spacing: -0.5px; margin: 40px 0 8px; }
+  .updated { color: #9CA3AF; font-size: 14px; margin-bottom: 34px; }
+  h2 { font-size: 22px; margin: 30px 0 8px; }
+  p, li { color: #CBD5E1; font-size: 16px; }
+  p { margin-bottom: 12px; }
+  ul { margin: 0 0 12px 22px; }
+  li { margin-bottom: 6px; }
+  footer { text-align: center; color: #9CA3AF; font-size: 14px; padding: 50px 0 34px; }
+  @media (max-width: 640px) { header nav { display: none; } }
+</style>
+</head>
+<body>
+<div class="glow">
+<div class="wrap">
+
+<header>
+  <img src="icon.png" alt="CodeBubble icon">
+  <div class="name">CodeBubble</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#download">Download</a>
+  </nav>
+</header>
+
+<h1>Privacy Policy</h1>
+<p class="updated">Effective date: November 5, 2026 &middot; App: CodeBubble 1.0 &middot; Package: com.bmo.codebubble</p>
+
+<h2>Overview</h2>
+<p>CodeBubble catches verification codes from SMS messages and app notifications on your device, copies them to the clipboard, and shows them in a draggable bubble. This policy explains what the app accesses, what it stores, and what it never does with your data.</p>
+<p>The short version: <strong>CodeBubble collects nothing.</strong> It has no internet permission, no account, no analytics, and no ads. Your codes and messages never leave your phone.</p>
+
+<h2>Data we do not collect</h2>
+<p>CodeBubble does not collect, transmit, store on a server, sell, or share any personal data, including:</p>
+<ul>
+  <li>Your phone number, contacts, or identity</li>
+  <li>The content of your SMS messages or notifications, or the codes in them</li>
+  <li>Your clipboard contents</li>
+  <li>Your location, device identifiers, or usage statistics</li>
+</ul>
+<p>There is no server, no account system, and no third-party SDK in the app. Because the app has no internet permission, it literally cannot send anything anywhere.</p>
+
+<h2>Data processed on your device</h2>
+<p>To do its job, the app reads the following <strong>only on your device</strong>:</p>
+<ul>
+  <li><strong>Incoming SMS messages</strong> &mdash; to detect verification codes.</li>
+  <li><strong>App notifications</strong> &mdash; to detect verification codes in notifications.</li>
+  <li><strong>Clipboard contents</strong> &mdash; to show a bubble for numbers you copy anywhere on the device.</li>
+</ul>
+<p>Detected codes are copied to your clipboard and kept in a local history (the last 50 entries, with time, source, and message snippet) so you can copy them again. History can be cleared in the app at any time, and it auto-cleans entries older than 30 days if you enable that option.</p>
+<p>If you enable the optional broadcast setting, detected codes are broadcast on your device for automation apps you chose. That broadcast stays on your device and is only received by apps you installed and configured yourself.</p>
+
+<h2>Permissions and why</h2>
+<p>The app requests only the permissions it needs to function: receiving SMS, sending notifications, reading notifications, displaying over other apps, running a foreground service, and battery exemption to stay alive in the background. Two extra shortcuts (per-brand battery page, restricted settings) are optional. See the Permissions section on the <a href="index.html">home page</a> for the full list.</p>
+
+<h2>Third parties</h2>
+<p>CodeBubble shares nothing with third parties, because it sends nothing anywhere. The app's website and GitHub repository are public pages; visiting them is subject to GitHub's own privacy policy, which is outside this policy.</p>
+
+<h2>Security</h2>
+<p>All processing happens locally on your device, protected by your device's own lock screen and operating system. The app's source code is public (MIT licensed), so anyone can read exactly what it does.</p>
+
+<h2>Children's privacy</h2>
+<p>CodeBubble is not directed at children, and it collects no data from anyone, including children.</p>
+
+<h2>Changes to this policy</h2>
+<p>This policy may be updated from time to time. The current version on this page applies. Material changes will be reflected here with a new effective date.</p>
+
+<h2>Contact</h2>
+<p>Questions about this policy can be raised as an issue in the repository: <a href="https://github.com/lunrofi/codebubble/issues">github.com/lunrofi/codebubble/issues</a>.</p>
+
+<footer>
+  CodeBubble &middot; by lunrofi &middot; MIT License &middot;
+  <a href="https://github.com/lunrofi/codebubble">GitHub</a> &middot;
+  <a href="index.html">Home</a>
+</footer>
+
+</div>
+</div>
+</body>
+</html>
