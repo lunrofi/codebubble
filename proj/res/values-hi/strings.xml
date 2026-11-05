@@ -43,11 +43,11 @@
     <string name="toast_ignored">अनदेखा किया गया: %1$s</string>
     <string name="toast_need_overlay">पहले "अन्य ऐप्स के ऊपर दिखाना" अनुमति दें।</string>
     <string name="toast_saved">सहेजा गया।</string>
-    <string name="notif_channel">KodBalonu कोड</string>
+    <string name="notif_channel">CodeBubble कोड</string>
     <string name="notif_title">कोड: %1$s</string>
     <string name="action_copy">कॉपी करें</string>
     <string name="action_ignore">अनदेखा करें</string>
-    <string name="clipboard_running_title">KodBalonu चल रहा है</string>
+    <string name="clipboard_running_title">CodeBubble चल रहा है</string>
     <string name="clipboard_running_text">क्लिपबोर्ड निगरानी: नंबर कॉपी होने पर बुलबुला दिखाई देता है।</string>
     <string name="lang_system">सिस्टम भाषा</string>
     <string name="note_text">नोट: कुछ फ़ील्ड (विशेषकर बैंक और वेब फ़ील्ड) खींचकर छोड़े गए कोड स्वीकार नहीं कर सकते। तब बुलबुले को छूकर कॉपी करें, फिर फ़ील्ड को देर तक दबाकर पेस्ट करें।</string>
@@ -65,13 +65,13 @@
     <string name="btn_request">अनुरोध करें</string>
     <string name="btn_open">खोलें</string>
     <string name="btn_copy">कॉपी करें</string>
-    <string name="app_name">कोड बुलबुला</string>
+    <string name="app_name">CodeBubble</string>
     <string name="btn_got_it">समझ गया</string>
     <string name="perm_oem_bg">बैकग्राउंड बैटरी सेटिंग</string>
     <string name="section_extra_perms">अतिरिक्त अनुमतियाँ (वैकल्पिक)</string>
     <string name="tracking_active">✓ क्लिपबोर्ड ट्रैकिंग चालू है</string>
     <string name="ready_title">तैयार हैं!</string>
     <string name="ready_msg">क्लिपबोर्ड ट्रैकिंग शुरू हो गई है। हम 10 सेकंड में आपको एक परीक्षण सूचना भेजेंगे — आप ऐप से बाहर निकल सकते हैं।</string>
-    <string name="test_notif_title">KodBalonu परीक्षण सूचना</string>
+    <string name="test_notif_title">CodeBubble परीक्षण सूचना</string>
     <string name="test_notif_text">क्लिपबोर्ड ट्रैकिंग चालू है। कोड आने पर बुबुला यहाँ दिखाई देगा।</string>
 </resources>

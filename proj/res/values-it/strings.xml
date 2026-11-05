@@ -43,11 +43,11 @@
     <string name="toast_ignored">Ignorato: %1$s</string>
     <string name="toast_need_overlay">Prima concedi l\'autorizzazione "Visualizzazione sopra altre app".</string>
     <string name="toast_saved">Salvato.</string>
-    <string name="notif_channel">Codici KodBalonu</string>
+    <string name="notif_channel">Codici CodeBubble</string>
     <string name="notif_title">Codice: %1$s</string>
     <string name="action_copy">Copia</string>
     <string name="action_ignore">Ignora</string>
-    <string name="clipboard_running_title">KodBalonu in esecuzione</string>
+    <string name="clipboard_running_title">CodeBubble in esecuzione</string>
     <string name="clipboard_running_text">Monitoraggio appunti: compare una bolla quando viene copiato un numero.</string>
     <string name="lang_system">Lingua di sistema</string>
     <string name="note_text">Nota: Alcuni campi (specialmente bancari e web) potrebbero non accettare codici trascinati. Tocca la bolla per copiare, poi tieni premuto il campo per incollare.</string>
@@ -65,13 +65,13 @@
     <string name="btn_request">Richiedi</string>
     <string name="btn_open">Apri</string>
     <string name="btn_copy">Copia</string>
-    <string name="app_name">Bolla di Codice</string>
+    <string name="app_name">CodeBubble</string>
     <string name="btn_got_it">Capito</string>
     <string name="perm_oem_bg">Impostazione batteria in background</string>
     <string name="section_extra_perms">Autorizzazioni aggiuntive (facoltative)</string>
     <string name="tracking_active">✓ Monitoraggio appunti attivo</string>
     <string name="ready_title">Pronto!</string>
     <string name="ready_msg">Il monitoraggio degli appunti è iniziato. Ti invieremo una notifica di prova tra 10 secondi: puoi uscire dall’app.</string>
-    <string name="test_notif_title">Notifica di prova KodBalonu</string>
+    <string name="test_notif_title">Notifica di prova CodeBubble</string>
     <string name="test_notif_text">Il monitoraggio degli appunti è attivo. Quando arriverà un codice, la bolla apparirà qui.</string>
 </resources>

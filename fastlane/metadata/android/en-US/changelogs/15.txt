@@ -1,0 +1,2 @@
+Renamed to CodeBubble (new package com.bmo.codebubble). Same features, same signing key.
+Existing KodBalonu users need to reinstall; the new package does not update over the old one.

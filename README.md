@@ -1,19 +1,21 @@
-# KodBalonu
+# CodeBubble
 
-![KodBalonu icon](icon.png)
+> Formerly KodBalonu — renamed to CodeBubble in v3.12 with a new package (`com.bmo.codebubble`). Existing KodBalonu users need to reinstall; the new package does not update over the old one.
 
-**KodBalonu** catches verification codes from SMS and app notifications,
+![CodeBubble icon](icon.png)
+
+**CodeBubble** catches verification codes from SMS and app notifications,
 copies them to the clipboard, and shows a draggable bubble. Long-press the
 code in the bubble and drag it onto a text field to drop the code there.
 
-- **Version:** 3.11 (version code 14)
-- **Download:** [kodbalonu-3.11.apk](releases/kodbalonu-3.11.apk)
-- **Package:** `com.bmo.kodbalonu`
+- **Version:** 3.12 (version code 15)
+- **Download:** [codebubble-3.12.apk](releases/codebubble-3.12.apk)
+- **Package:** `com.bmo.codebubble`
 - **Min SDK:** 26 (Android 8.0) · **Target SDK:** 34 (Android 14)
 - **Size:** ~237 KB — no heavy libraries, plain Java, no Gradle needed
 - **License:** MIT (see [LICENSE](LICENSE))
 
-> KodBalonu is written from scratch. It does not contain code from any
+> CodeBubble is written from scratch. It does not contain code from any
 > other code-catcher app. The sensitive-phrase list is a generic list of
 > common code terms in 12 languages (221 default terms).
 
@@ -41,7 +43,7 @@ code in the bubble and drag it onto a text field to drop the code there.
 - **Ignored apps and senders** — ignore codes from selected apps
   (package names) or SMS senders.
 - **Broadcast** — optionally broadcasts detected codes
-  (`com.bmo.kodbalonu.CODE_DETECTED`) for automation apps.
+  (`com.bmo.codebubble.CODE_DETECTED`) for automation apps.
 - **Sensitive clipboard** — optionally marks the clipboard entry as
   sensitive (Android 13+).
 - **Hide code in history** — optionally masks codes in the history list.
@@ -75,8 +77,7 @@ code in the bubble and drag it onto a text field to drop the code there.
   Permissions screen opens the right battery/autostart page for the
   phone's brand (Samsung, Xiaomi, Huawei, Oppo, Vivo, or system
   battery settings), so the app is not killed in the background.
-- **Localized app name** — the launcher label follows the system
-  language (e.g. KodBalonu in Turkish, CodeBubble in English).
+- **Localized app name** — the launcher label is CodeBubble in all languages.
 - **Android 15+ note** — on Android 15+, the Permissions screen shows
   Enhanced Notifications guidance with two copyable ADB commands.
 
@@ -103,7 +104,7 @@ No Gradle is required. You need JDK 17 and the Android SDK
 (platform 34, build-tools 34.0.0):
 
 ```sh
-export KODBALONU_KS_PASS="your-keystore-password"
+export CODEBUBBLE_KS_PASS="your-keystore-password"
 ./build.sh
 ```
 
@@ -117,7 +118,7 @@ repository — generate your own for your own builds.
 ```
 proj/
   AndroidManifest.xml
-  src/com/bmo/kodbalonu/
+  src/com/bmo/codebubble/
     MainActivity.java            # UI: permissions, settings, phrases, history
     Detector.java                # phrase matching + code extraction
     SmsReceiver.java             # incoming SMS
@@ -140,7 +141,7 @@ proj/
     values-zh/                   # translations
     xml/accessibility_service_config.xml
     raw/demo_drag.mp4          # first-run drag-and-drop demo video
-releases/kodbalonu-3.10.apk     # signed release APK
+releases/codebubble-3.12.apk     # signed release APK
 ```
 
 ## Known limitations

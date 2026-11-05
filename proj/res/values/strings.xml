@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="accessibility_desc">KodBalonu: shows a bubble for codes copied to the clipboard. It does not read window content, it only checks the clipboard.</string>
+    <string name="accessibility_desc">CodeBubble: shows a bubble for codes copied to the clipboard. It does not read window content, it only checks the clipboard.</string>
     <string name="app_desc">Catches verification codes from SMS and app notifications.\n\n• When a code arrives, it is copied to the clipboard and a bubble appears.\n• Drag the bubble to move it.\n• Long-press the code and drag it onto a text field to drop the code there (if the field accepts it).\n• Tap the code to copy it again. × closes the bubble.\n\nThree permissions are needed: SMS, notification access, and display over other apps.</string>
     <string name="status_line1">SMS: %1$s • Notification access: %2$s</string>
     <string name="status_line2">Overlay: %1$s • Clipboard watching: %2$s</string>
@@ -44,11 +44,11 @@
     <string name="toast_ignored">Ignored: %1$s</string>
     <string name="toast_need_overlay">First grant the "Display over other apps" permission.</string>
     <string name="toast_saved">Saved.</string>
-    <string name="notif_channel">KodBalonu codes</string>
+    <string name="notif_channel">CodeBubble codes</string>
     <string name="notif_title">Code: %1$s</string>
     <string name="action_copy">Copy</string>
     <string name="action_ignore">Ignore</string>
-    <string name="clipboard_running_title">KodBalonu is running</string>
+    <string name="clipboard_running_title">CodeBubble is running</string>
     <string name="clipboard_running_text">Watching the clipboard: a bubble appears when a number is copied.</string>
     <string name="lang_system">System language</string>
     <string name="note_text">Note: Some fields (especially some banking and web fields) may not accept drag-and-drop codes. In that case tap the bubble to copy, then long-press the field and paste.</string>
@@ -74,6 +74,6 @@
     <string name="tracking_active">✓ Clipboard tracking is on</string>
     <string name="ready_title">You are ready!</string>
     <string name="ready_msg">Clipboard tracking started. We will send you a test notification in 10 seconds — you can leave the app.</string>
-    <string name="test_notif_title">KodBalonu test notification</string>
+    <string name="test_notif_title">CodeBubble test notification</string>
     <string name="test_notif_text">Clipboard tracking is on. When a code arrives, the bubble will pop up here.</string>
 </resources>
