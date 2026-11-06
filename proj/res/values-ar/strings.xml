@@ -43,11 +43,11 @@
     <string name="toast_ignored">تم التجاهل: %1$s</string>
     <string name="toast_need_overlay">امنح أولا إذن "العرض فوق التطبيقات الأخرى".</string>
     <string name="toast_saved">تم الحفظ.</string>
-    <string name="notif_channel">رموز CodeBubble</string>
+    <string name="notif_channel">رموز CodeSpray</string>
     <string name="notif_title">الرمز: %1$s</string>
     <string name="action_copy">نسخ</string>
     <string name="action_ignore">تجاهل</string>
-    <string name="clipboard_running_title">CodeBubble يعمل</string>
+    <string name="clipboard_running_title">CodeSpray يعمل</string>
     <string name="clipboard_running_text">مراقبة الحافظة: تظهر فقاعة عند نسخ رقم.</string>
     <string name="lang_system">لغة النظام</string>
     <string name="note_text">ملاحظة: بعض الحقول (خاصة المصرفية وحقول الويب) قد لا تقبل الرموز بالسحب والإفلات. المس الفقاعة للنسخ، ثم اضغط مطولا على الحقل للصق.</string>
@@ -65,13 +65,13 @@
     <string name="btn_request">طلب</string>
     <string name="btn_open">فتح</string>
     <string name="btn_copy">نسخ</string>
-    <string name="app_name">CodeBubble</string>
+    <string name="app_name">CodeSpray</string>
     <string name="btn_got_it">فهمت</string>
     <string name="perm_oem_bg">إعداد بطارية الخلفية</string>
     <string name="section_extra_perms">أذونات إضافية (اختيارية)</string>
     <string name="tracking_active">✓ تتبع الحافظة نشط</string>
     <string name="ready_title">أنت جاهز!</string>
     <string name="ready_msg">بدأ تتبع الحافظة. سنرسل إليك إشعارًا تجريبيًا بعد 10 ثوانٍ — يمكنك مغادرة التطبيق.</string>
-    <string name="test_notif_title">إشعار اختبار CodeBubble</string>
+    <string name="test_notif_title">إشعار اختبار CodeSpray</string>
     <string name="test_notif_text">تتبع الحافظة نشط. عند وصول رمز، ستظهر الفقاعة هنا.</string>
 </resources>

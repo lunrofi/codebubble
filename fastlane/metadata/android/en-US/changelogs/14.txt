@@ -1,0 +1,4 @@
+3.11:
+- New "Additional permissions (optional)" section for the per-brand battery shortcut and restricted settings
+- Prominent start button at the top, disabled until all required permissions are granted
+- "You're ready" notice on start, with a test notification 10 seconds later

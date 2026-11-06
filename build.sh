@@ -1,11 +1,11 @@
 #!/bin/bash
-# CodeBubble build script — no Gradle required.
+# CodeSpray build script — no Gradle required.
 # Requirements: JDK 17, Android SDK (platform 34, build-tools 34.0.0).
-# Set CODEBUBBLE_KS_PASS to the keystore password before running.
+# Set CODESPRAY_KS_PASS to the keystore password before running.
 set -e
 DIR="$(cd "$(dirname "$0")" && pwd)"
-if [ "${CODEBUBBLE_UNSIGNED:-0}" != "1" ]; then
-  : "${CODEBUBBLE_KS_PASS:?Set CODEBUBBLE_KS_PASS first}"
+if [ "${CODESPRAY_UNSIGNED:-0}" != "1" ]; then
+  : "${CODESPRAY_KS_PASS:?Set CODESPRAY_KS_PASS first}"
 fi
 export JAVA_HOME="${JAVA_HOME:-$HOME/opt/jdk17}"
 export PATH=$JAVA_HOME/bin:$PATH
@@ -38,20 +38,20 @@ with zipfile.ZipFile(apk, "a", zipfile.ZIP_DEFLATED) as z:
 print("added", dexes)
 PY
 
-$BT/zipalign -f 4 $OUT/unsigned.apk $OUT/codebubble-aligned.apk
-if [ "${CODEBUBBLE_UNSIGNED:-0}" = "1" ]; then
+$BT/zipalign -f 4 $OUT/unsigned.apk $OUT/codespray-aligned.apk
+if [ "${CODESPRAY_UNSIGNED:-0}" = "1" ]; then
   echo "UNSIGNED BUILD (for F-Droid source builds; F-Droid signs it)"
-  ls -lh $OUT/codebubble-aligned.apk
+  ls -lh $OUT/codespray-aligned.apk
   exit 0
 fi
 
-KS=$DIR/codebubble.keystore
+KS=$DIR/codespray.keystore
 if [ ! -f "$KS" ]; then
-  keytool -genkeypair -keystore "$KS" -alias codebubble -keyalg RSA -keysize 2048 -validity 10000 \
-    -storepass "$CODEBUBBLE_KS_PASS" -keypass "$CODEBUBBLE_KS_PASS" -dname "CN=CodeBubble, OU=CodeBubble, O=CodeBubble, C=TR"
+  keytool -genkeypair -keystore "$KS" -alias codespray -keyalg RSA -keysize 2048 -validity 10000 \
+    -storepass "$CODESPRAY_KS_PASS" -keypass "$CODESPRAY_KS_PASS" -dname "CN=CodeSpray, OU=CodeSpray, O=CodeSpray, C=TR"
 fi
 
-$BT/apksigner sign --ks "$KS" --ks-pass pass:"$CODEBUBBLE_KS_PASS" --key-pass pass:"$CODEBUBBLE_KS_PASS" \
-  --out $OUT/codebubble.apk $OUT/codebubble-aligned.apk
-$BT/apksigner verify $OUT/codebubble.apk && echo "VERIFY OK"
-ls -lh $OUT/codebubble.apk
+$BT/apksigner sign --ks "$KS" --ks-pass pass:"$CODESPRAY_KS_PASS" --key-pass pass:"$CODESPRAY_KS_PASS" \
+  --out $OUT/codespray.apk $OUT/codespray-aligned.apk
+$BT/apksigner verify $OUT/codespray.apk && echo "VERIFY OK"
+ls -lh $OUT/codespray.apk

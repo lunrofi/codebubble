@@ -1,4 +1,4 @@
-CodeBubble catches verification codes from SMS and app notifications, copies them to the clipboard, and shows a draggable bubble.
+CodeSpray catches verification codes from SMS and app notifications, copies them to the clipboard, and shows a draggable bubble.
 
 Long-press the code in the bubble and drag it onto a text field to drop the code there. Tap the code to copy it again. The bubble auto-closes after 90 seconds.
 
